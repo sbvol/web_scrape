@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    }
+    th, td {
+    padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div clas="container">
+    <div class="jumbotron text-center">
+      <h1>Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Mars Information</a></p>
+    </div>
+      
+    <!-- Mars data -->
+    <div class="row">
+      <div class="col-md-6 col-md-offset-1">    
+          <h3>Mars Latest News</h3>
+          <ul>
+            {% for title in mars.title %}
+            <li>{{ title }}</li>
+            {% endfor %}
+          </ul>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class="col-md-4 col-md-offset-1">
+          <h3>Featured Image</h3>
+            <img src={{ mars.feature_image }} height="425" width="425">
+      </div>   
+      <div class="col-md-6">    
+          <h3>Mars Weather</h3>
+          <p>{{mars.weather}}</p>
+          <br>
+          <br>
+          <h3>Mars Facts</h3>
+            <table style="width:75%">
+                <tr>
+                    <th>Characteristic</th>
+                    <th>Value</th> 
+                </tr>
+                <tr>
+                    <td>
+                    {% for fact in mars.facts %}
+                    {{ fact.characteristic }}<br/>
+                    {% endfor %}
+                    </td>
+                    <td>
+                    {% for fact in mars.facts %}
+                    {{ fact.value }}<br/>
+                    {% endfor %}
+                    </td>
+                </tr>
+            </table>
+      </div>
+    </div>
+    <br/>
+    <div class='row'>
+      <div class="col-md-6 col-md-offset-1">
+<!--        {% for hem in mars.hemisphere %}-->
+        <img src={{ hem.image_url }} height="325" width="325"><br/>
+        {{hem.title}}<br/>
+        <!--{% endfor %}-->
+      </div>
+    </div>
+<!--      <div class="col-md-6 col-md-offset-1">
+          <h3>Mars Hemispheres</h3>
+            <table style="width:60%">
+                <tr>
+                    <th>Column</th> 
+                </tr>
+                <tr>
+                    <td>
+          {% for hem in mars.hemisphere %}
+          <img src={{ hem.image_url }} height="425" width="425">
+          {{hem.title}}<br/>
+          {% endfor %}-->
+<!--                    </td>
+                </tr>
+            </table>          
+      </div>
+    </div>-->
+  </div>
+
+</body>
+</html>
